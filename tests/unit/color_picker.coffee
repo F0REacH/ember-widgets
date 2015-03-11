@@ -48,3 +48,16 @@ test 'Color picker converts color to hex when color is invalid', ->
   testHexConversion "foo", undefined
   testHexConversion "rgb(a, b, c)", undefined
   testHexConversion "rgb(1,2,3)", undefined
+
+test 'Custom selected color is set as custom color', ->
+  color = '#addec0'
+  colorPicker.set 'selectedColor', color
+  equal colorPicker.get('customColor'), color
+
+test 'Clicking color picker cell sets selectedColor', ->
+  Ember.run ->
+    colorPicker.appendTo '#ember-testing'
+
+  click('.color-picker-cell')
+  .then ->
+    equal colorPicker.get('selectedColor'), '#000000'

@@ -216,10 +216,14 @@ Ember.Widgets.ColorPicker = Ember.Component.extend
       selectedColor in row.invoke 'toLowerCase'
     @set 'customColor', @get('selectedColor')
 
-  setCustomColor: Ember.observer ->
-    if @get('isCustomColorValid') is true
-      @set 'selectedColor', expandHexColor(@get('customColor'))
-  , 'customColor', 'isCustomColorValid'
+  setCustomAsSelected: Ember.observer ->
+    selectedColor = @get 'selectedColor'
+    colorRows = @get 'colorRows'
+    for row in colorRows
+      if selectedColor in row
+        return @set 'customColor', ''
+    @set 'customColor', selectedColor
+  , 'selectedColor', 'colorRows'
 
   isCustomColorValid: Ember.computed ->
     /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test("#{@get('customColor')}")
