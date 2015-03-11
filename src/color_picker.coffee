@@ -210,20 +210,13 @@ Ember.Widgets.ColorPicker = Ember.Component.extend
       ])
     ])
 
-  setupCustomColor: Ember.on 'init', ->
-    selectedColor = colorToHex(@get('selectedColor'))
-    return if @get('colorRows').find (row) ->
-      selectedColor in row.invoke 'toLowerCase'
-    @set 'customColor', @get('selectedColor')
-
-  setCustomAsSelected: Ember.observer ->
+  setCustomColor: Ember.observer(->
     selectedColor = @get 'selectedColor'
-    colorRows = @get 'colorRows'
-    for row in colorRows
-      if selectedColor in row
-        return @set 'customColor', ''
+    selectedColor = colorToHex(selectedColor)
+    return @set('customColor', '') if @get('colorRows').find (row) ->
+      selectedColor in row.invoke 'toLowerCase'
     @set 'customColor', selectedColor
-  , 'selectedColor', 'colorRows'
+  , 'selectedColor', 'colorRows').on('init')
 
   isCustomColorValid: Ember.computed ->
     /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test("#{@get('customColor')}")
