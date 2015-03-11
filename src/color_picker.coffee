@@ -231,6 +231,11 @@ Ember.Widgets.ColorPicker = Ember.Component.extend
       @set 'customColor', ''
       @set 'selectedColor', color
 
+    setCustomColor: ->
+      color = @get 'customColor'
+      @set 'selectedColor', color
+      @userDidSelect(color)
+
   userDidSelect: (selection) ->
     @sendAction 'userSelected', selection
 
