@@ -101,10 +101,6 @@
   // Height depends on the button size
   width: @colorpicker-cell-width;
   border: 1px solid #e6e6e6;
-
-  &.active {
-    border-color: @highlight-blue;
-  }
 }
 
 // Stong selector to override color-picker-button.btn css
@@ -113,6 +109,10 @@
   height: @colorpicker-cell-height;
   width: @colorpicker-cell-width;
   cursor: pointer;
+
+  &.active {
+    border-color: @highlight-blue;
+  }
 }
 
 .color-picker-custom-form {
@@ -149,11 +149,4 @@
 .color-picker-dropdown-button .color-picker-cell-transparent {
   position: relative;
   z-index: 1;
-}
-
-// Eyeballed to be the same height as color preview and width when there are 4
-// colors per row.
-.color-picker-hex-input.form-control.input-sm {
-  width: 104px;
-  height: 28px;
 }

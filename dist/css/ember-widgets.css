@@ -533,14 +533,14 @@
   width: 30px;
   border: 1px solid #e6e6e6;
 }
-.color-picker-cell.active {
-  border-color: #0097e3;
-}
 .color-picker-dropdown .color-row .color-picker-cell {
   margin: 2px;
   height: 30px;
   width: 30px;
   cursor: pointer;
+}
+.color-picker-dropdown .color-row .color-picker-cell.active {
+  border-color: #0097e3;
 }
 .color-picker-custom-form {
   padding-top: 2px;
@@ -567,10 +567,6 @@
 .color-picker-dropdown-button .color-picker-cell-transparent {
   position: relative;
   z-index: 1;
-}
-.color-picker-hex-input.form-control.input-sm {
-  width: 104px;
-  height: 28px;
 }
 .modal {
   display: block !important;
